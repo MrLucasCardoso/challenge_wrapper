@@ -17,7 +17,7 @@ class Api:
         """
         Queries the API and returns a dictionary containing all 
         quotes available.
-        If occured any error in request, returns a dict with empty quote list
+        If occured any error in request, returns a dict with empty quotes list
         :param: raise_exception: Flag that if true raises the exception, 
         and if not it returns the dictionary with the empty quotes 
         list. By default it is False
@@ -31,5 +31,30 @@ class Api:
             if raise_exception:
                 raise err
             return {'quotes': []}
+
+    @classmethod
+    def get_quote(cls, quote_number, raise_exception=False):
+        """
+        Queries the API and returns a dictionary containing the corresponding 
+        quote
+        If occured any error in request, returns a dict with empty quote str
+        :param: quote_number: Number that represent the quote.
+        :param: raise_exception: Flag that if true raises the exception, 
+        and if not it returns the dictionary with the empty quote 
+        list. By default it is False.
+        :return: Dictionary with the following items: { 'quote': '...' }
+        """
+        client = cls._get_client()
+
+        # This library interprets zero as False, so I convert to string
+        quote_number = str(quote_number)
+
+        try:
+            response = client.quotes._(quote_number).get()
+            return response.to_dict
+        except HTTPError as err:
+            if raise_exception:
+                raise err
+            return {'quote': ''}
 
 
