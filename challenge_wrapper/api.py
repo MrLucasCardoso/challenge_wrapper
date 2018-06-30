@@ -16,12 +16,15 @@ class Api:
     def get_quotes(cls, raise_exception=False):
         """
         Queries the API and returns a dictionary containing all 
-        quotes available.
-        If occured any error in request, returns a dict with empty quotes list
+        quotes available. If occured any error in request, returns a dict with 
+        empty quotes list
+        
         :param: raise_exception: Flag that if true raises the exception, 
         and if not it returns the dictionary with the empty quotes 
         list. By default it is False
+
         :return: Dictionary with the following items: { 'quotes': ['', '', ...] }
+        
         """
         client = cls._get_client()
         try:
@@ -36,12 +39,15 @@ class Api:
     def get_quote(cls, quote_number, raise_exception=False):
         """
         Queries the API and returns a dictionary containing the corresponding 
-        quote
-        If occured any error in request, returns a dict with empty quote str
+        quote. If occured any error in request, returns a dict with empty 
+        quote str
+        
         :param: quote_number: Number that represent the quote.
+        
         :param: raise_exception: Flag that if true raises the exception, 
         and if not it returns the dictionary with the empty quote 
         list. By default it is False.
+        
         :return: Dictionary with the following items: { 'quote': '...' }
         """
         client = cls._get_client()
