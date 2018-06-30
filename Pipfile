@@ -7,6 +7,8 @@ name = "pypi"
 python-http-client = "*"
 
 [dev-packages]
+pytest = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.6"
