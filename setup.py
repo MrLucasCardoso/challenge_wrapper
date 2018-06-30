@@ -9,5 +9,5 @@ setup(
     author_email='mr.lucascardoso@gmail.com',
     url='https://github.com/mrlucascardoso/challenge_wrapper',
     classifiers=[],
-    install_requires=[]
+    install_requires=['python-http-client', ]
 )
